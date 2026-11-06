@@ -8,6 +8,9 @@
   "scripts": {
     "mobile": "npm run start --workspace mobile",
     "web": "npm run dev --workspace web",
-    "typecheck": "npm run typecheck --workspaces --if-present"
+    "typecheck": "npm run typecheck --workspaces --if-present",
+    "db:link": "npm exec --yes supabase@3.0.0 -- link --project-ref vkquqqibcdsugigxahud",
+    "db:push": "npm exec --yes supabase@3.0.0 -- db push --remote",
+    "db:push:dry": "npm exec --yes supabase@3.0.0 -- db push --remote --dry-run"
   }
 }
