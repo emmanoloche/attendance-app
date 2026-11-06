@@ -61,22 +61,26 @@ Options are brought to the owner at the phase where each one is needed; the owne
 - [x] **Checkpoint:** owner confirms setup (Expo Go supports SDK 58)
 
 ## Phase 1 — Project skeleton
-> **Status (2026-11-06):** setup finished — packages installed, Tailwind + shadcn/ui on the dashboard, "Hello" screens in both apps, `supabase/` created, git repo linked to github.com/emmanoloche/attendance-app (nothing pushed yet). Type checks pass and the dashboard builds. **Waiting on the owner:** Supabase project + `.env` files.
+> **✅ Phase 1 complete (2026-11-06).** Pushed on branch `phase-1`, CodeRabbit review: no major changes.
 >
 > Phase 1 choices: Expo SDK 58 · Tailwind + shadcn/ui (base-nova style) · Expo Router · Supabase cloud project (no Docker)
+>
+> Gotcha: Expo CLI login on Windows only works with `npx expo login --no-browser` (browser login crashes).
 
 - [x] Monorepo created: `apps/mobile`, `apps/web`, `packages/shared`, `supabase/`
 - [x] Both apps connected to Supabase via `.env` (keys not committed)
 - [x] "Hello" screen runs on iPhone via Expo Go
 - [x] "Hello" page runs in the browser
-- [ ] **Checkpoint:** owner sees both running
-- [ ] Pushed to GitHub + CodeRabbit review done (comments fixed)
+- [x] **Checkpoint:** owner sees both running
+- [x] Pushed to GitHub + CodeRabbit review done (comments fixed)
 
 ## Phase 2 — Database & security rules
-- [ ] Tables: profiles, devices, device_change_requests, courses, enrollments, sessions, session_location_tokens, attendance, scan_attempts, disputes, settings
-- [ ] Row Level Security: students see own data, lecturers see own courses, admin sees all, no direct attendance writes
-- [ ] Admin account created by hand
-- [ ] **Checkpoint:** walkthrough of tables in Supabase dashboard
+> Migrations in `supabase/migrations/`, uploaded with `npm run db:push` (Supabase CLI 3 needs `--remote`; scripts use `npm exec` because `npx.cmd` is missing on this laptop). Student levels: 100–500.
+
+- [x] Tables: profiles, devices, device_change_requests, courses, enrollments, sessions, session_secrets, session_location_tokens, attendance, scan_attempts, disputes, settings
+- [x] Row Level Security: students see own data, lecturers see own courses, admin sees all, no direct attendance writes (checked: strangers see 0 rows, secrets return 401, attendance writes blocked)
+- [x] Admin account created by hand (Emmanuel Ochigbo, emmanueloloche30@gmail.com)
+- [x] **Checkpoint:** walkthrough of tables in Supabase dashboard
 - [ ] Pushed to GitHub + CodeRabbit review done (comments fixed)
 
 ## Phase 3 — Accounts & sign-in

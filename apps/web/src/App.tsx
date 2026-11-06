@@ -1,7 +1,7 @@
 import { APP_NAME, checkSupabaseConnection, type ConnectionResult } from '@attendance/shared'
 import { useEffect, useState } from 'react'
 
-import { supabasePublishableKey, supabaseUrl } from '@/lib/supabase'
+import { supabasePublishableKey, supabaseUrl } from '@/lib/supabase.ts'
 
 // Phase 1 "Hello" page: proves the dashboard runs and can reach Supabase.
 export default function App() {
