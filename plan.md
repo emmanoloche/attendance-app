@@ -78,7 +78,7 @@ Options are brought to the owner at the phase where each one is needed; the owne
 > Migrations in `supabase/migrations/`, uploaded with `npm run db:push` (Supabase CLI 3 needs `--remote`; scripts use `npm exec` because `npx.cmd` is missing on this laptop). Student levels: 100–500.
 
 - [x] Tables: profiles, devices, device_change_requests, courses, enrollments, sessions, session_secrets, session_location_tokens, attendance, scan_attempts, disputes, settings
-- [x] Row Level Security: students see own data, lecturers see own courses, admin sees all, no direct attendance writes (checked: strangers see 0 rows, secrets return 401, attendance writes blocked)
+- [x] Row Level Security: students see own data, lecturers see own courses, admin sees all, no direct attendance writes (checked: strangers see 0 rows, secrets return 401, attendance writes blocked). After CodeRabbit review: migration 4 replaces Supabase's broad default grants with least-privilege ones — strangers now get 401 on every table, no TRUNCATE for app roles. Migration 5: students can't have an empty matric number (tested: '' rejected, 'CSC/2021/001' accepted).
 - [x] Admin account created by hand (Emmanuel Ochigbo, emmanueloloche30@gmail.com)
 - [x] **Checkpoint:** walkthrough of tables in Supabase dashboard
 - [ ] Pushed to GitHub + CodeRabbit review done (comments fixed)
